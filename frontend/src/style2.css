@@ -1,0 +1,35 @@
+.export-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #b8e017, #2ee31d); /* purple gradient */
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-left: 8px;
+  margin-bottom: 12px;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  font-size: 15px; /* synced size */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(200, 199, 203, 0.844);
+  transition: all 0.3s ease;
+
+  /* Gradient text synced with background */
+  background-clip: padding-box;
+  color: transparent;
+  background-image: linear-gradient(90deg, #ffffff, #d1c4e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.export-btn:hover {
+  background: linear-gradient(135deg, #bbeece, #66dfb7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(238, 235, 241, 0.4);
+
+  /* Hover text sync */
+  background-image: linear-gradient(90deg, #f1c40f, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

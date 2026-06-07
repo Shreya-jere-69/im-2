@@ -1,0 +1,78 @@
+/* Product Table */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  /* Proper background layering: image + semi-transparent overlay */
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+    url("https://tse3.mm.bing.net/th/id/OIP.jzrj5pXxwyUAFYZs784doAHaEJ?pid=Api&h=220&P=0")
+    no-repeat center center;
+  background-size: cover;
+
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+
+  /* Dark outer border */
+  border: 2px solid #0b0909;
+}
+
+.product-table th {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Gradient text only for headings */
+  background: linear-gradient(90deg, #933b3b, #0d0e0d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Dark border for header cells */
+  border: 1px solid #333;
+}
+
+.product-table td {
+  border: 1px solid #333; /* dark border for table cells */
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  color: #1a1a1a; /* dark font color */
+  font-weight: 600;
+}
+
+.product-table tr:nth-child(even) {
+  background: rgba(223, 227, 237, 0.8);
+}
+
+.product-table tr:hover {
+  background: rgba(78, 97, 144, 0.9);
+  transition: background 0.3s ease;
+}
+
+/* Empty Text */
+.empty-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #222; /* dark font color */
+}
+
+/* Filter Box */
+.filter-box input,
+.filter-box select,
+.filter-box button {
+  padding: 8px;
+  border: 1px solid #1a1a1a; /* dark border */
+  border-radius: 6px;
+  font-weight: bold;
+  color: #2c2c2c;
+  font-family: "Montserrat", sans-serif;
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+  outline: 2px solid #9dd051;
+}

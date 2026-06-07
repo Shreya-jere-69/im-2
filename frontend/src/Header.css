@@ -1,0 +1,78 @@
+/* Header */
+.app-header {
+  background: linear-gradient(90deg, #3498db, #2ecc71); /* elegant gradient */
+  color: white;
+  padding: 18px;
+  text-align: center;   /* centers the text */
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.site-name {
+  margin: 0;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #f1c40f, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Inventory Management Text */
+.inventory-title {
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 8px;
+  background: linear-gradient(90deg, #ff6f61, #ffcc00); /* warm gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Links */
+.nav-links {
+  margin-top: 10px;
+}
+
+.nav-links a {
+  color: white;
+  margin: 0 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #f1c40f;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.app-footer {
+  background: linear-gradient(90deg, #2c3e50, #34495e); /* elegant gradient */
+  color: #ecf0f1;
+  padding: 18px;
+  text-align: center;
+  margin-top: 40px;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  font-weight: 500;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #ecf0f1;
+  margin: 0 12px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #e74c3c;
+  transform: scale(1.1);
+}

@@ -1,0 +1,12 @@
+.filter-box {
+  display: grid;
+  grid-template-columns: 2fr 1fr 120px;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.filter-box input,
+.filter-box select,
+.filter-box button {
+  margin: 0;
+}
