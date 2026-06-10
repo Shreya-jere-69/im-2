@@ -1,133 +1,104 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function AddProduct() {
-  const navigate = useNavigate();
+function Products() {
+  const [products, setProducts] = useState([]);
 
-  const [categories, setCategories] = useState([]);
-  const [suppliers, setSuppliers] = useState([]);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    category: "",
-    price: "",
-    quantity: "",
-    supplier: ""
-  });
-
-  useEffect(() => {
+  const getProducts = () => {
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("http://localhost:5000/api/products")
       .then((res) => {
-        setCategories(res.data);
+        setProducts(res.data);
       })
       .catch((err) => {
         console.log(err);
+        alert("Failed to load products");
       });
-
-    axios
-      .get("http://localhost:5000/api/suppliers")
-      .then((res) => {
-        setSuppliers(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    axios
-      .post("http://localhost:5000/api/products", formData)
-      .then(() => {
-        alert("Product added successfully");
-        navigate("/products");
-      })
-      .catch((err) => {
-        console.log(err);
-        alert("Failed to add product");
-      });
+  const deleteProduct = (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this product?");
+
+    if (confirmDelete) {
+      axios
+        .delete(`http://localhost:5000/api/products/${id}`)
+        .then(() => {
+          alert("Product deleted successfully");
+          getProducts();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Failed to delete product");
+        });
+    }
   };
 
   return (
     <>
       <div className="header">
-        <h1>Add Product</h1>
-        <p>Add a new product to inventory</p>
+        <h1>Product List</h1>
+        <p>All added products are displayed below</p>
       </div>
 
-      <div className="form-box">
-        <form onSubmit={handleSubmit}>
-          <label>Product Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+      <div className="table-box">
+        <Link className="small-btn" to="/add-product">
+          Add New Product
+        </Link>
 
-          <label>Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category._id} value={category.name}>
-                {category.name}
-              </option>
+        <table className="product-table">
+          <thead>
+            <tr>
+              <th>Sl No</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Supplier</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={product._id}>
+                <td>{index + 1}</td>
+                <td>{product.name}</td>
+                <td>{product.category}</td>
+                <td>Rs. {product.price}</td>
+                <td>{product.quantity}</td>
+                <td>{product.supplier}</td>
+                <td>
+                  <Link className="edit-btn" to={`/edit-product/${product._id}`}>
+                    Edit
+                  </Link>
+
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteProduct(product._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
             ))}
-          </select>
 
-          <label>Price</label>
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Quantity</label>
-          <input
-            type="number"
-            name="quantity"
-            value={formData.quantity}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Supplier</label>
-          <select
-            name="supplier"
-            value={formData.supplier}
-            onChange={handleChange}
-          >
-            <option value="">Select Supplier</option>
-            {suppliers.map((supplier) => (
-              <option key={supplier._id} value={supplier.name}>
-                {supplier.name}
-              </option>
-            ))}
-          </select>
-
-          <button type="submit">Add Product</button>
-        </form>
+            {products.length === 0 && (
+              <tr>
+                <td colSpan="7" className="empty-text">
+                  No products found. Add a product first.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </>
   );
 }
 
-export default AddProduct;
+export default Products;
