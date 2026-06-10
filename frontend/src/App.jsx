@@ -12,7 +12,7 @@ import Register from "./pages/Register";
 import Categories from "./pages/Categories";
 import NotFound from "./pages/NotFound";
 import Images from "./pages/Images";
-import Header from "./Components/Header.js";
+import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.js";
 import ProductList from "./pages/ProductList";
 
