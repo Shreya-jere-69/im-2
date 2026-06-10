@@ -12,8 +12,8 @@ import Register from "./pages/Register";
 import Categories from "./pages/Categories";
 import NotFound from "./pages/NotFound";
 import Images from "./pages/Images";
-import Header from "./components/Header.js";
-import Footer from "./components/Footer.js";
+import Header from "./Components/Header.js";
+import Footer from "./Components/Footer.js";
 import ProductList from "./pages/ProductList";
 
 function AppLayout() {
